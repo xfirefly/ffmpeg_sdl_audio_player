@@ -12,8 +12,8 @@ extern "C"{
 
 typedef struct PacketQueue
 {
-    AVPacketList    *first_pkt;     //队头的一个packet, 注意类型不是AVPacket
-    AVPacketList    *last_pkt;      //队尾packet
+    AVPacketList    *first_pkt;     
+    AVPacketList    *last_pkt;      
     int             nb_packets;     // paket个数
     int             size;           //
     SDL_mutex       *mutex;         //

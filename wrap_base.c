@@ -16,12 +16,7 @@ extern "C"
 }
 #endif
 
-
-/*======================================================================\
-* Author     (作者): i.sshe
-* Date       (日期): 2016/10/03
-* Others     (其他): 成功返回
-\*=======================================================================*/
+ 
 int find_stream_index(AVFormatContext *pformat_ctx, int *video_stream, int *audio_stream)
 {
     assert(video_stream != NULL || audio_stream != NULL);
@@ -42,7 +37,7 @@ int find_stream_index(AVFormatContext *pformat_ctx, int *video_stream, int *audi
           }
      }
 
-     //注意以下两个判断有可能返回-1.
+   
      if (video_stream == NULL)
      {
          *audio_stream = audio_index;
@@ -61,11 +56,7 @@ int find_stream_index(AVFormatContext *pformat_ctx, int *video_stream, int *audi
      return 0;
 }
 
-/*======================================================================\
-* Author     (作者): i.sshe
-* Date       (日期): 2016/10/03
-* Others     (其他): 获取文件名
-\*=======================================================================*/
+ 
 void get_file_name(char *filename, int argc, char *argv[])
 {
     if (argc == 2)

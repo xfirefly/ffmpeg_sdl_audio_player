@@ -1,5 +1,5 @@
 
-#define __STDC_CONSTANT_MACROS      //ffmpeg要求
+#define __STDC_CONSTANT_MACROS      
 
 #ifdef __cplusplus
 extern "C"
@@ -16,11 +16,7 @@ extern "C"
 #endif
 
 #include "packet_queue.h"
-/*======================================================================\
-* Author     (作者): i.sshe
-* Date       (日期): 2016/10/03
-* Others     (其他): 初始化队列
-\*=======================================================================*/
+ 
 void packet_queue_init(PacketQueue *queue)
 {
 //     memset(queue, 0, sizeof(PacketQueue));
@@ -31,17 +27,11 @@ void packet_queue_init(PacketQueue *queue)
 }
 
 
-
-/*======================================================================\
-* Author     (作者): i.sshe
-* Date       (日期): 2016/10/03
-* Others     (其他): 入队
-\*=======================================================================*/
+ 
 int packet_queue_put(PacketQueue *queue, AVPacket *packet)
 {
      AVPacketList   *pkt_list;
-
-     // ???
+ 
      if (av_dup_packet(packet) < 0)
      {
          return -1;
@@ -68,7 +58,7 @@ int packet_queue_put(PacketQueue *queue, AVPacket *packet)
          queue->last_pkt->next = pkt_list;
      }
 
-     queue->last_pkt = pkt_list;  //这里queue->last_pkt = queue->last_pkt->next 的意思，但是，处理了更多的情况。
+     queue->last_pkt = pkt_list;  
      queue->nb_packets++;
      queue->size += packet->size;
      SDL_CondSignal(queue->cond);      //???
@@ -78,11 +68,7 @@ int packet_queue_put(PacketQueue *queue, AVPacket *packet)
      return 0;
 }
 
-/*======================================================================\
-* Author     (作者): i.sshe
-* Date       (日期): 2016/10/03
-* Others     (其他): 出队
-\*=======================================================================*/
+ 
 extern int quit;
 int packet_queue_get(PacketQueue *queue, AVPacket *pkt, int block)
 {
